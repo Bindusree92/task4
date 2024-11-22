@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Haven - Online Plant Nursery</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f1;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(to right,#01431e, #3cb371);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        nav ul li {
+            margin: 0 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s ease-in-out;
+            letter-spacing: 1px;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+            text-decoration: underline;
+        }
+
+        /* Home Section */
+        #home {
+            background-image: url('https://aehinnovativehydrogel.com/wp-content/uploads/2022/07/04June22_what-are-the-requirements-for-plant-growth_iStock-956366756-1024x730.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 180px 20px; /* Increased padding for emphasis */
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        #home h2 {
+            font-size: 4rem; /* Increased size */
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        #home p {
+            font-size: 2rem;
+            margin-top: 20px;
+            font-weight: 500;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            padding: 70px 20px;
+            background:#e3d899;
+            text-align: center;
+        }
+
+        #portfolio h2 {
+            font-size: 2.8rem;
+            color: #2e8b57;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .portfolio-item {
+            display: inline-block;
+            width: 30%;
+            margin: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.8rem;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* Products Section */
+        #products {
+            text-align: center;
+            padding: 60px 20px;
+            background-color:#b4ddc6;
+        }
+
+        #product-filters {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #product-filters select {
+            padding: 12px;
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            transition: background-color 0.3s ease;
+        }
+
+        #product-filters select:hover {
+            background-color: #d3f4d7;
+        }
+
+        .product-card {
+            display: inline-block;
+            width: 230px;
+            margin: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-card h3 {
+            font-size: 1.6rem;
+            margin-top: 15px;
+            color: #2e8b57;
+        }
+
+        .product-card p {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .stars {
+            color: gold;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #d3cca5;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        #contact h2 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: #2e8b57;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #f7f7f7;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #contact form input,
+        #contact form textarea,
+        #contact form button {
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #contact form input:focus,
+        #contact form textarea:focus {
+            outline: none;
+            background-color: #f0f8f3;
+        }
+
+        #contact form button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #contact form button:hover {
+            background-color: #1e6a45;
+            transform: translateY(-3px);
+        }
+
+        /* To-Do List Section */
+        #todo {
+            padding: 70px 20px;
+            background-color: #efd8d8;
+            text-align: center;
+        }
+
+        #todo h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: #2e8b57;
+        }
+
+        #todo input[type="text"] {
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 60%;
+            margin-right: 20px;
+        }
+
+        #todo button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #todo button:hover {
+            background-color: #1e6a45;
+            transform: translateY(-2px);
+        }
+
+        #todo ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #todo ul li {
+            font-size: 1.4rem;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #todo ul li button {
+            background-color: #d9534f;
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #todo ul li button:hover {
+            background-color: #c9302c;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Green Haven</h1>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#todo">To-Do List</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Home Section -->
+<section id="home">
+    <h2>Welcome to Green Haven!</h2>
+    <p>Explore our online nursery for beautiful plants</p>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <h2>Our Work</h2>
+    <div class="portfolio-item">
+        <img src="https://www.avso.org/wp-content/uploads/files/9/5/1/60-beautiful-garden-ideas-garden-pictures-for-garden-decorations-0-951.jpg" alt="Plant 1">
+        <h3>Beautiful Garden Setup</h3>
+    </div>
+    <div class="portfolio-item">
+        <img src="https://i0.wp.com/koloapp.in/magazine/wp-content/uploads/2022/06/image3-1.jpg?resize=840%2C630&ssl=1" alt="Plant 2">
+        <h3>Indoor Plant Decoration</h3>
+    </div>
+    <div class="portfolio-item">
+        <img src="https://st2.depositphotos.com/1007254/7014/i/450/depositphotos_70141965-stock-photo-flower-pots.jpg" alt="Plant 3">
+        <h3>Custom Flower Pots</h3>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+    <h2>Product Catalog</h2>
+    <div id="product-filters">
+        <label for="categoryFilter">Category:</label>
+        <select id="categoryFilter">
+            <option value="all">All</option>
+            <option value="indoor">Indoor</option>
+            <option value="outdoor">Outdoor</option>
+        </select>
+
+        <label for="priceFilter">Price:</label>
+        <select id="priceFilter">
+            <option value="all">All</option>
+            <option value="low">Low to High</option>
+            <option value="high">High to Low</option>
+        </select>
+    </div>
+
+    <div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpcJcR9D3Zc2bdT1LWReL28IXE7swcnYTQjea6Oz5ZT9kLL55eBXlFWkKCY6HCROYzBHU&usqp=CAU" alt="Plant 1">
+        <h3>Fiddle Leaf Fig</h3>
+        <p>Price: $35</p>
+        <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="product-card">
+        <img src="https://www.thespruce.com/thmb/fEe5HvuX_JJzYoLbUk_6i7lt0kY=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc()/snake-plant-bloom-indoors-7480398-hero-9dead33fb3584cbc9e30b437532c3803.jpg" alt="Plant 2">
+        <h3>Snake Plant</h3>
+        <p>Price: $20</p>
+        <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+    <div class="product-card">
+        <img src="https://www.priorshop.uk/cdn/shop/files/mint-plants-plants-succulent-or-cactus-nursery-plants-5-5cm-42671519662363.jpg?v=1718467609" alt="Plant 3">
+        <h3>Succulent</h3>
+        <p>Price: $15</p>
+        <p class="stars">⭐⭐⭐☆☆</p>
+    </div>
+    <div class="product-card">
+        <img src="https://www.bhg.com/thmb/oDnjlrHprd67aYvinrMfQgVUPtQ=/5332x0/filters:no_upscale():strip_icc()/BHG-spider-plant-c0e0fdd5ec6e4c1588998ce3167f6579.jpg" alt="Plant 4">
+        <h3>Spider Plant</h3>
+        <p>Price: $18</p>
+        <p class="stars">⭐⭐⭐⭐</p>
+    </div>
+<div class="product-card">
+        <img src="https://assets.americanmeadows.com/media/catalog/product/t/u/tulipa-single-late-menton-cropped.jpg?quality=85&fit=bounds&height=&width=3840&auto=webp&format=pjpg" alt="Plant 5">
+        <h3>Tulips</h3>
+        <p>Price: $20</p>
+        <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+<div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP3Qk0tJdBP5OKkmoJClIUiJp5qfVN3nqMZp_7Ebrstaj_KodRCJY1CNvvT3o5ekBFKBA&usqp=CAU" alt="Plant 6">
+        <h3>Chrysanthemum</h3>
+        <p>Price: $25</p>
+        <p class="stars">⭐⭐⭐⭐</p>
+    </div>
+<div class="product-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0XTMBsnJZzEjefVORVnHKETsVY14peBa7Wg&s" alt="Plant 7">
+        <h3>Roses</h3>
+        <p>Price: $30</p>
+        <p class="stars">⭐⭐⭐⭐⭐</p>
+    </div>
+<div class="product-card">
+        <img src="https://cdn.mos.cms.futurecdn.net/5iyYxcmHhdWx5R8nJ6Wvbf.jpg" alt="Plant 8">
+        <h3>Guzmania</h3>
+        <p>Price: $15</p>
+        <p class="stars">⭐⭐⭐⭐</p>
+    </div>
+
+</section>
+
+<!-- To-Do List Section -->
+<section id="todo">
+    <h2>To-Do List</h2>
+    <input type="text" id="todoInput" placeholder="Add a new task">
+    <button id="addTaskButton">Add Task</button>
+    <ul id="todoList"></ul>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number" required>
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2024 Green Haven. All rights reserved.</p>
+</footer>
+
+<script>
+    // To-Do List Functionality
+    const addTaskButton = document.getElementById('addTaskButton');
+    const todoInput = document.getElementById('todoInput');
+    const todoList = document.getElementById('todoList');
+
+    // Load saved tasks from localStorage
+    window.onload = () => {
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        savedTasks.forEach(task => createTask(task));
+    };
+
+    // Save tasks to localStorage
+    function saveTasks() {
+        const tasks = [];
+        document.querySelectorAll('#todoList li').forEach(taskItem => {
+            tasks.push(taskItem.textContent.trim());
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    // Create task item
+    function createTask(taskText) {
+        const li = document.createElement('li');
+        li.textContent = taskText;
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => {
+            li.remove();
+            saveTasks();
+        };
+        li.appendChild(deleteButton);
+        todoList.appendChild(li);
+    }
+
+    // Add new task
+    addTaskButton.onclick = () => {
+        const taskText = todoInput.value.trim();
+        if (taskText) {
+            createTask(taskText);
+            todoInput.value = '';
+            saveTasks();
+        }
+    };
+</script>
+
+</body>
+</html>
